@@ -19,7 +19,10 @@ class Categoria extends Model
     }
 
     public function categorias(){
-
         return $this->hasMany(Categoria::class);
+    }
+
+    public function ingredientes(){
+        return $this->hasMany(Ingrediente::class);
     }
 }

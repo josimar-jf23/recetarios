@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('recetas', function (Blueprint $table) {
+        Schema::create('receta_utensilios', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('descripcion',200)->nullable();
             $table->unsignedBigInteger('utensilio_id');
             $table->foreign('utensilio_id')->references('id')->on('utensilios');
+            $table->timestamps();
         });
     }
 
@@ -22,10 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('recetas', function (Blueprint $table) {
-            $table->dropForeign(['utensilio_id']);
-            $table->dropColumn('utensilio_id');
-
-        });
+        Schema::dropIfExists('receta_utensilios');
     }
 };

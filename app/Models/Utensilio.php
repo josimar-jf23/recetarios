@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Utensilio extends Model
 {
     use HasFactory;
+
+    protected $table="utensilios";
+
+    protected $fillable=['nombre','descripcion'];
+
+    public function receta_utensilios(){
+        return $this->hasMany(RecetaUtensilio::class);
+    }
+    
 }

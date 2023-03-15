@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Ingrediente extends Model
 {
     use HasFactory;
+
+    protected $table="ingredientes";
+
+    protected $fillable=['nombre','descripcion','categoria_id'];
+
+    protected $hidden = ['updated_at'];
+
+    public function categoria(){
+        return $this->belongsTo(Categoria::class);
+    }
+
+    public function receta_detalles(){
+        return $this->hasMany(RecetaDetalle::class);
+    }
 }
