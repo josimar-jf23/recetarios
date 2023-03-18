@@ -17,4 +17,9 @@ class Utensilio extends Model
         return $this->hasMany(RecetaUtensilio::class);
     }
     
+    //relacion una a uno polimorfica
+    public function image(){
+        return $this->morphMany(Image::class,'imageable');
+    }
+
 }

@@ -17,4 +17,8 @@ class Receta extends Model
         return $this->belongsTo(RecetaTipo::class);
     }
     
+    //relacion una a uno polimorfica
+    public function images(){
+        return $this->morphMany(Image::class,'imageable');
+    }
 }

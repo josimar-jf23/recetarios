@@ -9,7 +9,7 @@ class RecetaTipo extends Model
 {
     use HasFactory;
 
-    protected $table="receta_detalles";
+    protected $table="receta_tipos";
 
     protected $fillable=['nombre','descripcion','orden'];
 

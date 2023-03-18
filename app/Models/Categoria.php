@@ -25,4 +25,9 @@ class Categoria extends Model
     public function ingredientes(){
         return $this->hasMany(Ingrediente::class);
     }
+
+    //relacion una a uno polimorfica
+    public function image(){
+        return $this->morphOne(Image::class,'imageable');
+    }
 }

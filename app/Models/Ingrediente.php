@@ -22,4 +22,9 @@ class Ingrediente extends Model
     public function receta_detalles(){
         return $this->hasMany(RecetaDetalle::class);
     }
+
+    //relacion una a uno polimorfica
+    public function images(){
+        return $this->morphMany(Image::class,'imageable');
+    }
 }
