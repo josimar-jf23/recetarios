@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Nuevo Categoria')
+@section('title', 'Nueva Categoria')
 
 @section('content_header')
 @stop
@@ -8,7 +8,7 @@
 @section('content')
 <div class="row justify-content-center">       
     <div class="card" style="width: 50em;">
-        <card-header><h1>Nuevo Categoria</h1></card-header>
+        <card-header><h1>Nueva Categoria</h1></card-header>
         <div class="card-body">
             <form method="POST" action="{{ route('admin.categorias.store') }}" autocomplete="false">
                 <input name="_token" id="_token" value="{{ csrf_token() }}" type="hidden">

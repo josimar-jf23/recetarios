@@ -4,7 +4,7 @@
 
 @section('plugins.Sweetalert2',true)
 @section('content_header')
-    <h1>Categorias</h1>
+    
 @stop
 
 @section('content')
@@ -18,7 +18,8 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="{{ route('admin.categorias.create')}}" class="btn btn-success float-left" title="NUEVO"><i class="fa fa-plus"></i></a>
+                        <h1>Categorias</h1>
+                        
                     </td>  
                     <td colspan="2">
                         <div class="form-inline float-right">                                
@@ -28,20 +29,22 @@
                             </div>                                  --}}
                         </div>
                     </td>
+                    <td></td>
                     
                 </tr>
             </table>                
         </div>
         <div class="card-body">
+            <a href="{{ route('admin.categorias.create')}}" class="btn btn-success float-left" title="NUEVO"><i class="fa fa-plus"></i></a>
             <div class="table-responsive">
                 <table class="table table-sm table-bordered mx-auto">
-                    <thead class="thead-dark">
+                    <thead class="bg-success">
                     <tr>
                         <th style="width:4rem;max-width:4rem"></th>
-                        <th style="width:4rem;max-width:4rem"></th>
-                        <th style="width:4rem;max-width:4rem"></th>
+                        <th style="width:4rem;max-width:4rem"></th>                        
                         <th scope="col">Nombre</th>
                         <th scope="col">Descripcion</th>
+                        <th style="width:4rem;max-width:4rem"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -49,20 +52,20 @@
                         @foreach ($categorias as $categoria)
                             <tr>
                                 <td>
-                                    <a class="btn" href="{{ route('admin.categorias.edit',$categoria)}}"><i class="fas fa-edit"></i></a>
+                                    <a class="btn" href="{{ route('admin.categorias.edit',$categoria)}}" title="Editar"><i class="fas fa-edit"></i></a>
                                 </td>                                
                                 <td>
                                     <form id="myform{{$categoria->id}}" class="formulario_delete" action="{{ route('admin.categorias.destroy',$categoria)}}" method="post">                                                
-                                        <button type="submit" class="btn"><i class="fas fa-trash"></i></button>
+                                        <button type="submit" class="btn" title="Eliminar"><i class="fas fa-trash"></i></button>
                                         <input type="hidden" name="_method" value="delete" />
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     </form>
-                                </td>
-                                <td>
-                                    <a class="btn" href="{{ route('admin.categorias.show',$categoria)}}"><i class="fas fa-book"></i></a>
-                                </td>
+                                </td>                                
                                 <td>{{$categoria->nombre}}</td>
                                 <td>{{$categoria->descripcion}}</td>
+                                <td>
+                                    <a class="btn" onclick="abrir_modal({{$categoria->ingredientes}})" title="Lista de Ingredientes"><i class="fas fa-book"></i></a>
+                                </td>
                             </tr>
                         @endforeach
                         
@@ -72,6 +75,20 @@
             {{$categorias->links()}}
         </div>
     </div>
+    <div id="myModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">INGREDIENTES</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="block_ingredientes" style="max-height: 500px;overflow-y: auto;">
+            </div>
+          </div>
+        </div>
+      </div>
 @stop
 
 @section('css')
@@ -80,7 +97,20 @@
 
 @section('js')
     <script> 
-        console.log('Hi!'); 
+        
+        function abrir_modal(categoria=''){
+            
+            console.log(categoria); 
+            $("#block_ingredientes").html("");
+            let lista='<ul class="list-group">'
+            $.each(categoria,function(index,valor){
+                console.log(valor);
+                lista+=('<li class="list-group-item">'+valor['nombre']+'</li>');
+            });
+            lista+='</ul>';
+            $("#block_ingredientes").append(lista);
+            $("#myModal").modal("show");
+        }
         $(".formulario_delete").submit(function(e){
             console.log("entra");
             e.preventDefault();
