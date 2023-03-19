@@ -11,7 +11,7 @@ class Receta extends Model
 
     protected $table="recetas";
 
-    protected $fillable=['nombre','descripcion','indicaciones','receta_tipo_id'];
+    protected $fillable=['nombre','slug','descripcion','indicaciones','receta_tipo_id'];
 
     public function receta_tipos(){
         return $this->belongsTo(RecetaTipo::class);

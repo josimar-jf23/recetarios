@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('recetas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre',150);
+            $table->string('slug');
             $table->string('descripcion',150)->nullable();
             $table->text('indicaciones')->nullable();
             $table->unsignedBigInteger('receta_tipo_id');

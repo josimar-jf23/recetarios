@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('unidad_medidas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre',150);
+            $table->string('slug');
             $table->string('abreviatura',20)->nullable();
             $table->string('descripcion',250)->nullable();
             $table->timestamps();

@@ -11,7 +11,7 @@ class Ingrediente extends Model
 
     protected $table="ingredientes";
 
-    protected $fillable=['nombre','descripcion','categoria_id'];
+    protected $fillable=['nombre','slug','descripcion','categoria_id'];
 
     protected $hidden = ['updated_at'];
 

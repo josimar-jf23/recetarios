@@ -11,7 +11,7 @@ class Utensilio extends Model
 
     protected $table="utensilios";
 
-    protected $fillable=['nombre','descripcion'];
+    protected $fillable=['nombre','slug','descripcion'];
 
     public function receta_utensilios(){
         return $this->hasMany(RecetaUtensilio::class);

@@ -11,7 +11,7 @@ class UnidadMedida extends Model
 
     protected $table="unidad_medidas";
 
-    protected $fillable=['descripcion','abreviatura '];
+    protected $fillable=['nombre','slug','abreviatura','descripcion'];
 
     public function receta_detalles(){
         return $this->hasMany(RecetaDetalle::class);

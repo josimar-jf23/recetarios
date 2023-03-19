@@ -10,7 +10,7 @@ class Categoria extends Model
     use HasFactory;
     protected $table="categorias";
 
-    protected $fillable=['nombre','descripcion','orden','parent_id','parents'];
+    protected $fillable=['nombre','slug','descripcion','orden','parent_id','parents'];
 
     protected $hidden = ['updated_at'];
 

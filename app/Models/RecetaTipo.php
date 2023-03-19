@@ -11,7 +11,7 @@ class RecetaTipo extends Model
 
     protected $table="receta_tipos";
 
-    protected $fillable=['nombre','descripcion','orden'];
+    protected $fillable=['nombre','slug','descripcion','orden'];
 
     public function receta(){
         return $this->hasMany(Receta::class);

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('ingredientes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre',150);
+            $table->string('slug');
             $table->string('descripcion',150)->nullable();
             $table->unsignedBigInteger('categoria_id');
             $table->foreign('categoria_id')->references('id')->on('categorias');
