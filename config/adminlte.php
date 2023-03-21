@@ -332,6 +332,12 @@ return [
             'icon'      => 'fas fa-fw fa-utensils',
             'active'    => ['admin/utensilios/*'],
         ],
+        [
+            'text'      => 'Unidad Medida',
+            'route'     => 'admin.unidad_medidas.index',
+            'icon'      => 'fas fa-fw fa-ruler-horizontal',
+            'active'    => ['admin/unidad_medidas/*'],
+        ],
         ['header'   => 'RECETAS'],
         [
             'text'      => 'Tipos',

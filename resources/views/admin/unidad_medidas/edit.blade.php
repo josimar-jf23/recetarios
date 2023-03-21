@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar Utensilios')
+@section('title', 'Editar Unidad de Medida')
 
 @section('content_header')
 @stop
@@ -8,16 +8,25 @@
 @section('content')
 <div class="row justify-content-center">       
     <div class="card" style="width: 50em;">
-        <card-header><h1>Editar Utensilios</h1></card-header>
+        <card-header><h1>Editar Unidad de Medida</h1></card-header>
         <div class="card-body">
-            <form method="POST" action="{{ route('admin.utensilios.update',$utensilio) }}">
+            <form method="POST" action="{{ route('admin.unidad_medidas.update',$unidad_medida) }}">
                 {{ method_field('PUT') }}
                 <input name="_token" id="_token" value="{{ csrf_token() }}" type="hidden">
                 <div class="form-group">
                     <label for="nombre" class="col col-form-label text-md-left">Nombre<span style="color:red">*</span></label>
                     <div class="col">
-                        <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ $errors->all() ? old('nombre') : $utensilio->nombre }}">
+                        <input id="nombre" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ $errors->all() ? old('nombre') : $unidad_medida->nombre }}">
                         @error('nombre')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>                    
+                </div>
+                <div class="form-group">
+                    <label for="abreviatura" class="col col-form-label text-md-left">Abreviatura</label>
+                    <div class="col">
+                        <input id="abreviatura" type="text" class="form-control @error('abreviatura') is-invalid @enderror" name="abreviatura" value="{{ $errors->all() ? old('abreviatura') : $unidad_medida->abreviatura }}">
+                        @error('abreviatura')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>                    
@@ -25,18 +34,19 @@
                 <div class="form-group">
                     <label for="descripcion" class="col col-form-label text-md-left">Descripcion</label>
                     <div class="col">
-                        <input id="descripcion" type="text" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" value="{{ $errors->all() ? old('descripcion') : $utensilio->descripcion }}">
+                        <input id="descripcion" type="text" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" value="{{ $errors->all() ? old('descripcion') : $unidad_medida->descripcion }}">
                         @error('descripcion')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>                    
                 </div>
+                
                 <div class="form-group row">
                     <div class="col-md-6 offset-md-4">
                         <button type="submit" class="btn btn-success">
                             Agregar
                         </button>
-                        <a href="{{ route('admin.utensilios.index')}}" class="btn btn-danger">Cancelar</a>
+                        <a href="{{ route('admin.unidad_medidas.index')}}" class="btn btn-danger">Cancelar</a>
                     </div>
                 </div>
             </form>

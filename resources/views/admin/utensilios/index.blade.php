@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Ingredientes')
+@section('title', 'Utensilios')
 
 @section('plugins.Sweetalert2',true)
 @section('content_header')
@@ -18,7 +18,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <h1>Ingredientes</h1>
+                        <h1>Utensilios</h1>
                         
                     </td>  
                     <td colspan="2">
@@ -35,42 +35,40 @@
             </table>                
         </div>
         <div class="card-body">
-            <a href="{{ route('admin.ingredientes.create')}}" class="btn btn-success float-left" title="NUEVO"><i class="fa fa-plus"></i></a>
+            <a href="{{ route('admin.utensilios.create')}}" class="btn btn-success float-left" title="NUEVO"><i class="fa fa-plus"></i></a>
             <div class="table-responsive">
                 <table class="table table-sm table-bordered mx-auto">
                     <thead class="bg-success">
                     <tr>
                         <th style="width:4rem;max-width:4rem"></th>
                         <th style="width:4rem;max-width:4rem"></th>                        
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Ingrediente</th>
+                        <th scope="col">Nombre</th>
                         <th scope="col">Descripcion</th>
                     </tr>
                     </thead>
                     <tbody>
                         
-                        @foreach ($ingredientes as $ingrediente)
+                        @foreach ($utensilios as $utensilio)
                             <tr>
                                 <td>
-                                    <a class="btn" href="{{ route('admin.ingredientes.edit',$ingrediente)}}" title="Editar"><i class="fas fa-edit"></i></a>
+                                    <a class="btn" href="{{ route('admin.utensilios.edit',$utensilio)}}" title="Editar"><i class="fas fa-edit"></i></a>
                                 </td>                                
                                 <td>
-                                    <form id="myform{{$ingrediente->id}}" class="formulario_delete" action="{{ route('admin.ingredientes.destroy',$ingrediente)}}" method="post">                                                
+                                    <form id="myform{{$utensilio->id}}" class="formulario_delete" action="{{ route('admin.utensilios.destroy',$utensilio)}}" method="post">                                                
                                         <button type="submit" class="btn" title="Eliminar"><i class="fas fa-trash"></i></button>
                                         <input type="hidden" name="_method" value="delete" />
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     </form>
                                 </td>                                
-                                <td>{{$ingrediente->categoria->nombre}}</td>
-                                <td>{{$ingrediente->nombre}}</td>
-                                <td>{{$ingrediente->descripcion}}</td>
+                                <td>{{$utensilio->nombre}}</td>
+                                <td>{{$utensilio->descripcion}}</td>
                             </tr>
                         @endforeach
                         
                     </tbody>
                 </table>
             </div>
-            {{$ingredientes->links()}}
+            {{$utensilios->links()}}
         </div>
     </div>
 @stop

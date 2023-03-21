@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Receta Tipos')
+@section('title', 'Unidad de Medidas')
 
 @section('plugins.Sweetalert2',true)
 @section('content_header')
@@ -18,7 +18,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <h1>Receta Tipos</h1>
+                        <h1>Unidad de Medidas</h1>
                         
                     </td>  
                     <td colspan="2">
@@ -35,7 +35,7 @@
             </table>                
         </div>
         <div class="card-body">
-            <a href="{{ route('admin.receta_tipos.create')}}" class="btn btn-success float-left" title="NUEVO"><i class="fa fa-plus"></i></a>
+            <a href="{{ route('admin.unidad_medidas.create')}}" class="btn btn-success float-left" title="NUEVO"><i class="fa fa-plus"></i></a>
             <div class="table-responsive">
                 <table class="table table-sm table-bordered mx-auto">
                     <thead class="bg-success">
@@ -43,32 +43,34 @@
                         <th style="width:4rem;max-width:4rem"></th>
                         <th style="width:4rem;max-width:4rem"></th>                        
                         <th scope="col">Nombre</th>
+                        <th scope="col">Abreviatura</th>
                         <th scope="col">Descripcion</th>
                     </tr>
                     </thead>
                     <tbody>
                         
-                        @foreach ($receta_tipos as $receta_tipo)
+                        @foreach ($unidad_medidas as $unidad_medida)
                             <tr>
                                 <td>
-                                    <a class="btn" href="{{ route('admin.receta_tipos.edit',$receta_tipo)}}" title="Editar"><i class="fas fa-edit"></i></a>
+                                    <a class="btn" href="{{ route('admin.unidad_medidas.edit',$unidad_medida)}}" title="Editar"><i class="fas fa-edit"></i></a>
                                 </td>                                
                                 <td>
-                                    <form id="myform{{$receta_tipo->id}}" class="formulario_delete" action="{{ route('admin.receta_tipos.destroy',$receta_tipo)}}" method="post">                                                
+                                    <form id="myform{{$unidad_medida->id}}" class="formulario_delete" action="{{ route('admin.unidad_medidas.destroy',$unidad_medida)}}" method="post">                                                
                                         <button type="submit" class="btn" title="Eliminar"><i class="fas fa-trash"></i></button>
                                         <input type="hidden" name="_method" value="delete" />
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     </form>
                                 </td>                                
-                                <td>{{$receta_tipo->nombre}}</td>
-                                <td>{{$receta_tipo->descripcion}}</td>
+                                <td>{{$unidad_medida->nombre}}</td>
+                                <td>{{$unidad_medida->abreviatura}}</td>
+                                <td>{{$unidad_medida->descripcion}}</td>
                             </tr>
                         @endforeach
                         
                     </tbody>
                 </table>
             </div>
-            {{$receta_tipos->links()}}
+            {{$unidad_medidas->links()}}
         </div>
     </div>
 @stop
