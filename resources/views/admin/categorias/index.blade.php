@@ -49,7 +49,7 @@
                     </thead>
                     <tbody>
                         
-                        @foreach ($categorias as $categoria)
+                        @forelse ($categorias as $categoria)
                             <tr>
                                 <td>
                                     <a class="btn" href="{{ route('admin.categorias.edit',$categoria)}}" title="Editar"><i class="fas fa-edit"></i></a>
@@ -67,7 +67,9 @@
                                     <a class="btn" onclick="abrir_modal({{$categoria->ingredientes}})" title="Lista de Ingredientes"><i class="fas fa-book"></i></a>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr><td colspan="5">SIN DATOS QUE MOSTRAR</td></tr>
+                        @endforelse
                         
                     </tbody>
                 </table>

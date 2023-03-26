@@ -5,7 +5,9 @@ use App\Http\Controllers\Admin\IngredientesController;
 use App\Http\Controllers\Admin\RecetaDetallesController;
 use App\Http\Controllers\Admin\RecetasController;
 use App\Http\Controllers\Admin\RecetaTiposController;
+use App\Http\Controllers\Admin\RecetaUtensiliosController;
 use App\Http\Controllers\Admin\UnidadMedidasController;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\UtensiliosController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +24,14 @@ Route::get('receta_detalles/create/{receta}',[RecetaDetallesController::class,'c
 Route::get('receta_detalles/{receta_detalle}/edit',[RecetaDetallesController::class,'edit'])->name('admin.receta_detalles.edit');
 Route::delete('receta_detalles/{receta_detalle}',[RecetaDetallesController::class,'destroy'])->name('admin.receta_detalles.destroy');
 Route::put('receta_detalles/{receta_detalle}',[RecetaDetallesController::class,'update'])->name('admin.receta_detalles.update');
-//Route::resource('receta_detalles', RecetaDetallesController::class)->names('admin.receta_detalles');
+
+Route::get('receta_utensilios/{receta}',[RecetaUtensiliosController::class,'index'])->name('admin.receta_utensilios.index');
+Route::post('receta_utensilios',[RecetaUtensiliosController::class,'store'])->name('admin.receta_utensilios.store');
+Route::get('receta_utensilios/create/{receta}',[RecetaUtensiliosController::class,'create'])->name('admin.receta_utensilios.create');
+Route::get('receta_utensilios/{receta_utensilio}/edit',[RecetaUtensiliosController::class,'edit'])->name('admin.receta_utensilios.edit');
+Route::delete('receta_utensilios/{receta_utensilio}',[RecetaUtensiliosController::class,'destroy'])->name('admin.receta_utensilios.destroy');
+Route::put('receta_utensilios/{receta_utensilio}',[RecetaUtensiliosController::class,'update'])->name('admin.receta_utensilios.update');
+//Route::resource('receta_detalles', RecetaUtensiliosController::class)->names('admin.receta_detalles');
+
+Route::get('users/change_password',[UsersController::class,'edit'])->name('admin.users.change_password.edit');
+Route::post('users/change_password',[UsersController::class,'update'])->name('admin.users.change_password.update');

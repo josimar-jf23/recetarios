@@ -48,7 +48,7 @@
                     </thead>
                     <tbody>
                         
-                        @foreach ($receta_tipos as $receta_tipo)
+                        @forelse ($receta_tipos as $receta_tipo)
                             <tr>
                                 <td>
                                     <a class="btn" href="{{ route('admin.receta_tipos.edit',$receta_tipo)}}" title="Editar"><i class="fas fa-edit"></i></a>
@@ -63,7 +63,11 @@
                                 <td>{{$receta_tipo->nombre}}</td>
                                 <td>{{$receta_tipo->descripcion}}</td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="4">SIN DATOS QUE MOSTRAR</td>
+                            </tr>
+                        @endforelse
                         
                     </tbody>
                 </table>

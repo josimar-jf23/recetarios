@@ -49,7 +49,7 @@
                     </thead>
                     <tbody>
                         
-                        @foreach ($ingredientes as $ingrediente)
+                        @forelse ($ingredientes as $ingrediente)
                             <tr>
                                 <td>
                                     <a class="btn" href="{{ route('admin.ingredientes.edit',$ingrediente)}}" title="Editar"><i class="fas fa-edit"></i></a>
@@ -65,7 +65,11 @@
                                 <td>{{$ingrediente->nombre}}</td>
                                 <td>{{$ingrediente->descripcion}}</td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="5">SIN DATOS QUE MOSTRAR</td>
+                            </tr>
+                        @endforelse
                         
                     </tbody>
                 </table>

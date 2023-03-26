@@ -37,7 +37,7 @@
         <div class="card-body">
             <a href="{{ route('admin.recetas.create')}}" class="btn btn-success float-left" title="NUEVO"><i class="fa fa-plus"></i></a>
             <div class="table-responsive">
-                <table class="table table-sm table-bordered mx-auto">
+                <table class="table table-sm table-bordered table-fixed mx-auto">
                     <thead class="bg-success">
                     <tr>
                         <th style="width:4rem;max-width:4rem"></th>
@@ -46,18 +46,18 @@
                         <th scope="col">Receta</th>
                         <th scope="col">Descripcion</th>
                         <th scope="col">Indicaciones</th>
-                        <th scope="col">Detalles</th>
-                        <th scope="col">Utensilios</th>
+                        <th style="width:4rem;max-width:4rem" scope="col"></th>
+                        <th style="width:4rem;max-width:4rem" scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
                         
-                        @foreach ($recetas as $receta)
+                        @forelse ($recetas as $receta)
                             <tr>
-                                <td>
+                                <td style="text-align: center;">
                                     <a class="btn" href="{{ route('admin.recetas.edit',$receta)}}" title="Editar"><i class="fas fa-edit"></i></a>
                                 </td>                                
-                                <td>
+                                <td style="text-align: center;">
                                     <form id="myform{{$receta->id}}" class="formulario_delete" action="{{ route('admin.recetas.destroy',$receta)}}" method="post">                                                
                                         <button type="submit" class="btn" title="Eliminar"><i class="fas fa-trash"></i></button>
                                         <input type="hidden" name="_method" value="delete" />
@@ -68,14 +68,16 @@
                                 <td>{{$receta->nombre}}</td>
                                 <td>{{$receta->descripcion}}</td>
                                 <td>{{$receta->indicaciones}}</td>
-                                <td>
+                                <td style="text-align: center;">
                                     <a class="btn" href="{{ route('admin.receta_detalles.index',$receta)}}" title="Detalles de la receta"><i class="fas fa-book"></i></a>
                                 </td>
-                                <td>
-                                    <a class="btn" onclick="return false;" title="Utensilios de la receta"><i class="fas fa-book"></i></a>
+                                <td style="text-align: center;">
+                                    <a class="btn" href="{{ route('admin.receta_utensilios.index',$receta)}}" title="Utensilios de la receta"><i class="fas fa-fw fa-utensils"></i></a>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                        <tr><td colspan="8">SIN DATOS QUE MOSTRAR</td></tr>
+                        @endforelse
                         
                     </tbody>
                 </table>

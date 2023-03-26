@@ -49,7 +49,7 @@
                     </thead>
                     <tbody>
                         
-                        @foreach ($unidad_medidas as $unidad_medida)
+                        @forelse ($unidad_medidas as $unidad_medida)
                             <tr>
                                 <td>
                                     <a class="btn" href="{{ route('admin.unidad_medidas.edit',$unidad_medida)}}" title="Editar"><i class="fas fa-edit"></i></a>
@@ -65,7 +65,11 @@
                                 <td>{{$unidad_medida->abreviatura}}</td>
                                 <td>{{$unidad_medida->descripcion}}</td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="5">SIN DATOS QUE MOSTRAR</td>
+                            </tr>
+                        @endforelse
                         
                     </tbody>
                 </table>

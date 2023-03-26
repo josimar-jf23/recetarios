@@ -1,6 +1,8 @@
 @extends('adminlte::page')
 
-@section('title', 'Editar Detalle Receta')
+@section('title')
+Editar Detalle de {{ ucwords($receta->nombre ) }}
+@stop
 
 @section('plugins.Select2', true)
 
@@ -10,7 +12,7 @@
 @section('content')
 <div class="row justify-content-center">       
     <div class="card" style="width: 50em;">
-        <card-header><h1>Editar Detalle Receta</h1></card-header>
+        <card-header><h1>Editar Detalle de {{ ucwords($receta->nombre ) }}</h1></card-header>
         <div class="card-body">
             <form method="POST" action="{{ route('admin.receta_detalles.update',$receta_detalle) }}">
                 {{ method_field('PUT') }}

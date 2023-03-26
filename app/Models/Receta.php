@@ -17,11 +17,11 @@ class Receta extends Model
         return $this->belongsTo(RecetaTipo::class);
     }
     
-    public function receta_detalles(){
+    public function receta_detalle(){
         return $this->hasMany(RecetaDetalle::class);
     }
 
-    public function receta_utensilios(){
+    public function receta_utensilio(){
         return $this->hasMany(RecetaUtensilio::class);
     }
 

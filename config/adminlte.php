@@ -311,7 +311,6 @@ return [
             'url'   => 'admin/blog',
             'can'   => 'manage-blog',
         ],
-        ['header'   => 'INGREDIENTES'],
         [
             'text'      => 'Categorias',
             'route'     => 'admin.categorias.index',
@@ -356,9 +355,11 @@ return [
         ['header'   => 'CONFIGURACIONES'],
         [
             'text' => 'change_password',
-            'url'  => 'admin/settings',
+            //'url'  => 'admin/settings',
+            'route'     => 'admin.users.change_password.edit',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        /*
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
@@ -413,6 +414,7 @@ return [
             'icon_color' => 'cyan',
             'url'        => '#',
         ],
+        */
     ],
 
     /*

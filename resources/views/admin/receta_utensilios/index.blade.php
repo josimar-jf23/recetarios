@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 
 @section('title')
-Detalles de {{ ucwords($receta->nombre ) }}
+Utensilios de {{ucwords($receta->nombre)}}
 @stop
 @section('plugins.Sweetalert2',true)
 @section('content_header')
@@ -12,51 +12,45 @@ Detalles de {{ ucwords($receta->nombre ) }}
     <div class="card">
         <div class="card-header" style="display: flex;align-items: center;">                
             <a href="{{ route('admin.recetas.index')}}" class="btn btn-success float-left" title="Volver"><i class="fa fa-arrow-left"></i></a>
-            <h1>Detalles de {{ ucwords($receta->nombre) }}</h1>                
+            <h1>Utensilios de {{ucwords($receta->nombre)}}</h1>                
         </div>
         <div class="card-body">         
-            <a href="{{ route('admin.receta_detalles.create',$receta)}}" class="btn btn-success float-left" title="NUEVO"><i class="fa fa-plus"></i></a>
+            <a href="{{ route('admin.receta_utensilios.create',$receta)}}" class="btn btn-success float-left" title="NUEVO"><i class="fa fa-plus"></i></a>
             <div class="table-responsive">
                 <table class="table table-sm table-bordered mx-auto">
                     <thead class="bg-success">
                     <tr>
                         <th style="width:4rem;max-width:4rem"></th>
                         <th style="width:4rem;max-width:4rem"></th>                        
-                        <th scope="col">Ingrediente</th>
-                        <th scope="col">Cantidad</th>                        
-                        <th scope="col">Unidad Medida</th>
-                        <th scope="col">Adicional</th>
+                        <th scope="col">Utensilio</th>
+                        <th scope="col">Descripcion</th>
                     </tr>
                     </thead>
                     <tbody>
                         
-                        @forelse ($receta_detalles as $receta_detalle)
+                        @forelse ($receta_utensilios as $receta_utensilio)
                             <tr>
                                 <td>
-                                    <a class="btn" href="{{ route('admin.receta_detalles.edit',$receta_detalle)}}" title="Editar"><i class="fas fa-edit"></i></a>
+                                    <a class="btn" href="{{ route('admin.receta_utensilios.edit',$receta_utensilio)}}" title="Editar"><i class="fas fa-edit"></i></a>
                                 </td>                                
                                 <td>
-                                    <form id="myform{{$receta_detalle->id}}" class="formulario_delete" action="{{ route('admin.receta_detalles.destroy',$receta_detalle)}}" method="post">                                                
+                                    <form id="myform{{$receta_utensilio->id}}" class="formulario_delete" action="{{ route('admin.receta_utensilios.destroy',$receta_utensilio)}}" method="post">                                                
                                         <button type="submit" class="btn" title="Eliminar"><i class="fas fa-trash"></i></button>
                                         <input type="hidden" name="_method" value="delete" />
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     </form>
                                 </td>                                
-                                <td>{{$receta_detalle->ingrediente->nombre}}</td>                                
-                                <td>{{$receta_detalle->cantidad}}</td>
-                                <td>{{$receta_detalle->unidad_medida->nombre}}</td>
-                                <td>{{$receta_detalle->adicional}}</td>
+                                <td>{{$receta_utensilio->utensilio->nombre}}</td>                                
+                                <td>{{$receta_utensilio->descripcion}}</td>
                             </tr>
                         @empty
-                            <tr>
-                                <td colspan="5">SIN DATOS QUE MOSTRAR</td>
-                            </tr>
+                            <tr><td colspan="4">SIN DATOS QUE MOSTRAR</td></tr>
                         @endforelse
                         
                     </tbody>
                 </table>
             </div>
-            {{$receta_detalles->links()}}
+            {{$receta_utensilios->links()}}
         </div>
     </div>
 @stop

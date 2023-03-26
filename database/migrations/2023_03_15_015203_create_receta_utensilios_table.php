@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('receta_utensilios', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('descripcion',200)->nullable();
+            $table->unsignedBigInteger('receta_id');
             $table->unsignedBigInteger('utensilio_id');
+            $table->foreign('receta_id')->references('id')->on('recetas');
             $table->foreign('utensilio_id')->references('id')->on('utensilios');
             $table->timestamps();
         });
