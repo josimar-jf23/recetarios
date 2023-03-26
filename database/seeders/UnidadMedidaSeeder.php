@@ -25,6 +25,7 @@ class UnidadMedidaSeeder extends Seeder
             ['nombre'=>"Kilogramos",'abreviatura'=>"kg",'slug'=>Str::slug("Kilogramos"."-".date("YmdHis"))],
             ['nombre'=>"Centimetros Cubicos",'abreviatura'=>"cc",'slug'=>Str::slug("Centimetros Cubicos"."-".date("YmdHis"))],
             ['nombre'=>"Gotas",'abreviatura'=>"gotas",'slug'=>Str::slug("Gotas"."-".date("YmdHis"))],
+            ['nombre'=>"Unidad",'abreviatura'=>"un",'slug'=>Str::slug("Unidad"."-".date("YmdHis"))],
         ]);
     }
 }

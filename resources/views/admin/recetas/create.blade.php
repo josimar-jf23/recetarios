@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Nuevo Ingrediente')
+@section('title', 'Nuevo Receta')
 
 @section('plugins.Select2', true)
 
@@ -10,10 +10,24 @@
 @section('content')
 <div class="row justify-content-center">       
     <div class="card" style="width: 50em;">
-        <card-header><h1>Nuevo Ingrediente</h1></card-header>
+        <card-header><h1>Nuevo Receta</h1></card-header>
         <div class="card-body">
-            <form method="POST" action="{{ route('admin.ingredientes.store') }}" autocomplete="false">
+            <form method="POST" action="{{ route('admin.recetas.store') }}" autocomplete="false">
                 <input name="_token" id="_token" value="{{ csrf_token() }}" type="hidden">
+                <div class="form-group">
+                    <label for="receta_tipo_id" class="col col-form-label text-md-left">Receta Tipo<span style="color:red">*</span></label>
+                    <div class="col">                        
+                        <select class="input-select2 form-control" name="receta_tipo_id" id="receta_tipo_id" style="width: 100%;">
+                            <option value="">Seleccione</option>
+                            @foreach ($receta_tipos as $receta_tipo)
+                                <option value="{{$receta_tipo->id}}" {{ (old('receta_tipo_id')==$receta_tipo->id)?"selected":"" }}>{{$receta_tipo->nombre}}</option>
+                            @endforeach
+                        </select>
+                        @error('receta_tipo_id')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>                    
+                </div>
                 <div class="form-group">
                     <label for="nombre" class="col col-form-label text-md-left">Nombre<span style="color:red">*</span></label>
                     <div class="col">
@@ -33,25 +47,21 @@
                     </div>                    
                 </div>
                 <div class="form-group">
-                    <label for="categoria_id" class="col col-form-label text-md-left">Categoria<span style="color:red">*</span></label>
-                    <div class="col">                        
-                        <select class="input-select2 form-control" name="categoria_id" id="categoria_id" style="width: 100%;">
-                            <option value="">Seleccione</option>
-                            @foreach ($categorias as $categoria)
-                                <option value="{{$categoria->id}}" {{ (old('categoria_id')==$categoria->id)?"selected":"" }}>{{$categoria->nombre}}</option>
-                            @endforeach
-                        </select>
-                        @error('categoria_id')
+                    <label for="indicaciones" class="col col-form-label text-md-left">Indicaciones</label>
+                    <div class="col">
+                        <input id="indicaciones" type="text" class="form-control @error('indicaciones') is-invalid @enderror" name="indicaciones" value="{{ old('indicaciones') }}">
+                        @error('indicaciones')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>                    
                 </div>
+                
                 <div class="form-group row">
                     <div class="col-md-6 offset-md-4">
                         <button type="submit" class="btn btn-success">
                             Agregar
                         </button>
-                        <a href="{{ route('admin.ingredientes.index')}}" class="btn btn-danger">Cancelar</a>
+                        <a href="{{ route('admin.recetas.index')}}" class="btn btn-danger">Cancelar</a>
                     </div>
                 </div>
             </form>

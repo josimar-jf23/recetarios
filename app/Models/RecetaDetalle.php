@@ -11,7 +11,11 @@ class RecetaDetalle extends Model
 
     protected $table="receta_detalles";
 
-    protected $fillable=['ingrediente','adicional','cantidad','ingrediente_id','unidad_medida_id'];
+    protected $fillable=['adicional','cantidad','ingrediente_id','unidad_medida_id','receta_id'];
+
+    public function receta(){
+        return $this->belongsTo(Receta::class);
+    }
 
     public function ingrediente(){
         return $this->belongsTo(Ingrediente::class);

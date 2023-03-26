@@ -13,7 +13,7 @@ class RecetaTipo extends Model
 
     protected $fillable=['nombre','slug','descripcion','orden'];
 
-    public function receta(){
+    public function recetas(){
         return $this->hasMany(Receta::class);
     }
 }

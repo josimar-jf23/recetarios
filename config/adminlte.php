@@ -344,6 +344,14 @@ return [
             'route'     => 'admin.receta_tipos.index',
             'icon'      => 'far fa-fw fa-lemon',
             'active'    => ['admin/receta_tipos/*'],
+            
+        ],
+        [
+            'text'      => 'Recetas',
+            'route'     => 'admin.recetas.index',
+            'icon'      => 'far fa-fw fa-lemon',
+            'active'    => ['admin/recetas/*','admin/receta_detalles/*'],
+            
         ],
         ['header'   => 'CONFIGURACIONES'],
         [
@@ -501,9 +509,28 @@ return [
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    //'asset' => false,
+                    //'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'asset' => true,
+                    'location' => 'vendor/sweetalert2/sweetalert2.all.min.js',
                 ],
+                
+                [
+                    'type' => 'css',
+                    // 'asset' => false,
+                    // 'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
+                    'asset' => true,
+                    'location' => 'vendor/sweetalert2/sweetalert2.min.css',
+                ],
+                
+                [
+                    'type' => 'css',
+                    // 'asset' => false,
+                    // 'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
+                    'asset' => true,
+                    'location' => 'vendor/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css',
+                ],
+                
             ],
         ],
         'Pace' => [

@@ -19,8 +19,8 @@ class Ingrediente extends Model
         return $this->belongsTo(Categoria::class);
     }
 
-    public function receta_detalles(){
-        return $this->hasMany(RecetaDetalle::class);
+    public function receta_detalle(){
+        return $this->hasOne(RecetaDetalle::class);
     }
 
     //relacion una a uno polimorfica

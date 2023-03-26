@@ -34,7 +34,7 @@
                 <div class="form-group row">
                     <div class="col-md-6 offset-md-4">
                         <button type="submit" class="btn btn-success">
-                            Agregar
+                            Guardar
                         </button>
                         <a href="{{ route('admin.utensilios.index')}}" class="btn btn-danger">Cancelar</a>
                     </div>

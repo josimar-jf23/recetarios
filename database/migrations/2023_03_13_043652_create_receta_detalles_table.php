@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('receta_detalles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('ingrediente',150);
             $table->string('adicional',200)->nullable();
             $table->decimal('cantidad', 15, 4)->default('0');
             $table->unsignedBigInteger('ingrediente_id');
             $table->unsignedBigInteger('unidad_medida_id');
-            $table->foreign('ingrediente_id')->references('id')->on('receta_tipos');
+            $table->unsignedBigInteger('receta_id');
+            $table->foreign('receta_id')->references('id')->on('recetas');
+            $table->foreign('ingrediente_id')->references('id')->on('ingredientes');
             $table->foreign('unidad_medida_id')->references('id')->on('unidad_medidas');
             $table->timestamps();
         });

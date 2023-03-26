@@ -63,7 +63,7 @@
                 <div class="form-group row">
                     <div class="col-md-6 offset-md-4">
                         <button type="submit" class="btn btn-success">
-                            Agregar
+                            Guardar
                         </button>
                         <a href="{{ route('admin.ingredientes.index')}}" class="btn btn-danger">Cancelar</a>
                     </div>
@@ -85,6 +85,9 @@
             minimumResultsForSearch: 3,
             theme: "bootstrap4"
         });
+    });
+    $(document).on('select2:open', () => {
+        document.querySelector('.select2-search__field').focus();
     });
     </script>
 @stop

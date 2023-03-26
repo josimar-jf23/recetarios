@@ -12,6 +12,10 @@ class RecetaUtensilio extends Model
 
     protected $fillable=['descripcion','utensilio_id '];
 
+    public function receta(){
+        return $this->belongsTo(Receta::class);
+    }
+
     public function utensilio(){
         return $this->belongsTo(Utensilio::class);
     }
