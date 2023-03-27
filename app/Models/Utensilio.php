@@ -19,7 +19,7 @@ class Utensilio extends Model
     
     //relacion una a uno polimorfica
     public function image(){
-        return $this->morphMany(Image::class,'imageable');
+        return $this->morphOne(Image::class,'imageable');
     }
 
 }

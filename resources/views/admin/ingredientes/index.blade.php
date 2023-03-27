@@ -45,6 +45,7 @@
                         <th scope="col">Categoria</th>
                         <th scope="col">Ingrediente</th>
                         <th scope="col">Descripcion</th>
+                        <th style="width:4rem;max-width:4rem">Imagen</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -64,6 +65,13 @@
                                 <td>{{$ingrediente->categoria->nombre}}</td>
                                 <td>{{$ingrediente->nombre}}</td>
                                 <td>{{$ingrediente->descripcion}}</td>
+                                <td style="text-align: center;">
+                                    @isset($ingrediente->image)
+                                    <div class="button-container">
+                                        <img class="img-thumbnail" src="{{ Storage::url($ingrediente->image->url) }}" data-holder-rendered="true" style="width: 30px; height: 30px;cursor: pointer;" alt="Sin imagen" onclick="abrirModal('{{ Storage::url($ingrediente->image->url) }}','{{$ingrediente->nombre}}')">
+                                    </div>                       
+                                    @endisset
+                                </td>
                             </tr>
                         @empty
                             <tr>
@@ -77,10 +85,35 @@
             {{$ingredientes->links()}}
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row justify-content-center">
+                        <div class="button-container">
+                            <img id="imagen_visor" class="img-thumbnail" alt="50x50" src="" data-holder-rendered="true" style="max-width: 400px; max-height: 300px;" alt="Sin imagen" >
+                        </div> 
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <style>
+        th{
+            text-align: center;
+        }
+    </style>
 @stop
 
 @section('js')
@@ -114,6 +147,11 @@
             timer: 3000
             })            
         @endif
+        function abrirModal(url,titulo=""){
+            document.getElementById("imagen_visor").setAttribute("src", url);
+            $("#modalLabel").html(titulo);
+            $('#exampleModal').modal('show');
+        }
     </script>
     
 @stop
