@@ -45,6 +45,7 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Descripcion</th>
                         <th style="width:4rem;max-width:4rem"></th>
+                        <th style="width:4rem;max-width:4rem"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -65,6 +66,13 @@
                                 <td>{{$categoria->descripcion}}</td>
                                 <td>
                                     <a class="btn" onclick="abrir_modal({{$categoria->ingredientes}})" title="Lista de Ingredientes"><i class="fas fa-book"></i></a>
+                                </td>
+                                <td style="text-align: center;">
+                                    @isset($categoria->image)
+                                    <div class="button-container">
+                                        <img class="img-thumbnail" src="{{ Storage::url($categoria->image->url) }}" data-holder-rendered="true" style="width: 30px; height: 30px;cursor: pointer;" alt="Sin imagen" onclick="abrirModalImagen('{{ Storage::url($categoria->image->url) }}','{{$categoria->nombre}}')">
+                                    </div>                       
+                                    @endisset
                                 </td>
                             </tr>
                         @empty
@@ -91,6 +99,26 @@
           </div>
         </div>
       </div>
+      <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row justify-content-center">
+                        <div class="button-container">
+                            <img id="imagen_visor" class="img-thumbnail" alt="50x50" src="" data-holder-rendered="true" style="max-width: 400px; max-height: 300px;" alt="Sin imagen" >
+                        </div> 
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('css')
@@ -112,6 +140,11 @@
             lista+='</ul>';
             $("#block_ingredientes").append(lista);
             $("#myModal").modal("show");
+        }
+        function abrirModalImagen(url,titulo=""){
+            document.getElementById("imagen_visor").setAttribute("src", url);
+            $("#modalLabel").html(titulo);
+            $('#exampleModal').modal('show');
         }
         $(".formulario_delete").submit(function(e){
             console.log("entra");

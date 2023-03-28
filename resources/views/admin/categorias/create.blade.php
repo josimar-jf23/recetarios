@@ -10,7 +10,7 @@
     <div class="card" style="width: 50em;">
         <card-header><h1>Nueva Categoria</h1></card-header>
         <div class="card-body">
-            <form method="POST" action="{{ route('admin.categorias.store') }}" autocomplete="false">
+            <form method="POST" action="{{ route('admin.categorias.store') }}" autocomplete="false" enctype="multipart/form-data">
                 <input name="_token" id="_token" value="{{ csrf_token() }}" type="hidden">
                 <div class="form-group">
                     <label for="nombre" class="col col-form-label text-md-left">Nombre<span style="color:red">*</span></label>
@@ -38,6 +38,15 @@
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
                     </div>                    
+                </div>
+                <div class="form-group">
+                    <label for="imagen">Imagen</label>
+                    <div class="col">                                                 
+                        <input type="file" class="form-control-file" id="imagen" name="imagen" accept="image/*">
+                        @error('imagen')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror                        
+                    </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-md-6 offset-md-4">
