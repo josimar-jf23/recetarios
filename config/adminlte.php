@@ -312,7 +312,7 @@ return [
             'can'   => 'manage-blog',
         ],
         [
-            'text'      => 'Categorias',
+            'text'      => 'Categorias Ingredientes',
             'route'     => 'admin.categorias.index',
             'icon'      => 'far fa-fw fa-file',
             'active'    => ['admin/categorias/*'],

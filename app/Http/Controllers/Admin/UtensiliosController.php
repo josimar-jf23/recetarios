@@ -12,7 +12,7 @@ class UtensiliosController extends Controller
 {
     public function index()
     {
-        $utensilios=Utensilio::paginate(10);
+        $utensilios=Utensilio::with('image')->paginate(10);
         return view('admin.utensilios.index',compact('utensilios'));
     }
 

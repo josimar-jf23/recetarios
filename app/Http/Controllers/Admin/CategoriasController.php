@@ -12,7 +12,7 @@ class CategoriasController extends Controller
 {
     public function index()
     {
-        $categorias=Categoria::with('ingredientes')->paginate(10);
+        $categorias=Categoria::with('ingredientes')->with('image')->paginate(10);
         return view('admin.categorias.index',compact('categorias'));
     }
 

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Categorias')
+@section('title', 'Categorias de Ingredientes')
 
 @section('plugins.Sweetalert2',true)
 @section('content_header')
@@ -17,17 +17,8 @@
                     <td style="width: 33.33%"></td>
                 </tr>
                 <tr>
-                    <td>
-                        <h1>Categorias</h1>
-                        
-                    </td>  
                     <td colspan="2">
-                        <div class="form-inline float-right">                                
-                            {{--  <div class="form-group">  
-                                <label for="f_search">Buscar: </label>                                  
-                                <input id="f_search" name="f_search" type="text" class="form-control " placeholder="Ingrese publicacion"></td>
-                            </div>                                  --}}
-                        </div>
+                        <h1>Categorias de Ingredientes</h1>
                     </td>
                     <td></td>
                     
@@ -76,7 +67,7 @@
                                 </td>
                             </tr>
                         @empty
-                            <tr><td colspan="5">SIN DATOS QUE MOSTRAR</td></tr>
+                            <tr><td colspan="6">SIN DATOS QUE MOSTRAR</td></tr>
                         @endforelse
                         
                     </tbody>

@@ -14,9 +14,10 @@ class RecetasController extends Controller
     public function index()
     {
         $recetas=Receta::with('receta_tipo')
-                                    ->orderBy('receta_tipo_id','asc')
-                                    ->orderBy('nombre', 'asc')
-                                    ->paginate(10);
+                            ->with('image')
+                            ->orderBy('receta_tipo_id','asc')
+                            ->orderBy('nombre', 'asc')
+                            ->paginate(10);
         return view('admin.recetas.index',compact('recetas'));
     }
 

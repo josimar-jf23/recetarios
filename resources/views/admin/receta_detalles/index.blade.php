@@ -49,7 +49,7 @@ Detalles de {{ ucwords($receta->nombre ) }}
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5">SIN DATOS QUE MOSTRAR</td>
+                                <td colspan="6">SIN DATOS QUE MOSTRAR</td>
                             </tr>
                         @endforelse
                         
