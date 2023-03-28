@@ -44,6 +44,7 @@
                         <th style="width:4rem;max-width:4rem"></th>                        
                         <th scope="col">Nombre</th>
                         <th scope="col">Descripcion</th>
+                        <th style="width:4rem;max-width:4rem"></th> 
                     </tr>
                     </thead>
                     <tbody>
@@ -62,10 +63,17 @@
                                 </td>                                
                                 <td>{{$utensilio->nombre}}</td>
                                 <td>{{$utensilio->descripcion}}</td>
+                                <td style="text-align: center;">
+                                    @isset($utensilio->image)
+                                    <div class="button-container">
+                                        <img class="img-thumbnail" src="{{ Storage::url($utensilio->image->url) }}" data-holder-rendered="true" style="width: 30px; height: 30px;cursor: pointer;" alt="Sin imagen" onclick="abrirModalImagen('{{ Storage::url($utensilio->image->url) }}','{{$utensilio->nombre}}')">
+                                    </div>                       
+                                    @endisset
+                                </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="4">SIN DATOS QUE MOSTRAR</td>
+                                <td colspan="5">SIN DATOS QUE MOSTRAR</td>
                             </tr>
                         @endforelse
                         
@@ -73,6 +81,26 @@
                 </table>
             </div>
             {{$utensilios->links()}}
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row justify-content-center">
+                        <div class="button-container">
+                            <img id="imagen_visor" class="img-thumbnail" alt="50x50" src="" data-holder-rendered="true" style="max-width: 400px; max-height: 300px;" alt="Sin imagen" >
+                        </div> 
+                    </div> 
+                </div>
+            </div>
         </div>
     </div>
 @stop
@@ -83,7 +111,11 @@
 
 @section('js')
     <script> 
-        
+        function abrirModalImagen(url,titulo=""){
+            document.getElementById("imagen_visor").setAttribute("src", url);
+            $("#modalLabel").html(titulo);
+            $('#exampleModal').modal('show');
+        }
         $(".formulario_delete").submit(function(e){
             console.log("entra");
             e.preventDefault();

@@ -12,7 +12,7 @@
     <div class="card" style="width: 50em;">
         <card-header><h1>Nuevo Receta</h1></card-header>
         <div class="card-body">
-            <form method="POST" action="{{ route('admin.recetas.store') }}" autocomplete="false">
+            <form method="POST" action="{{ route('admin.recetas.store') }}" autocomplete="false" enctype="multipart/form-data">
                 <input name="_token" id="_token" value="{{ csrf_token() }}" type="hidden">
                 <div class="form-group">
                     <label for="receta_tipo_id" class="col col-form-label text-md-left">Receta Tipo<span style="color:red">*</span></label>
@@ -55,7 +55,15 @@
                         @enderror
                     </div>                    
                 </div>
-                
+                <div class="form-group">
+                    <label for="imagen">Imagen</label>
+                    <div class="col">                                                 
+                        <input type="file" class="form-control-file" id="imagen" name="imagen" accept="image/*">
+                        @error('imagen')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror                        
+                    </div>
+                </div>
                 <div class="form-group row">
                     <div class="col-md-6 offset-md-4">
                         <button type="submit" class="btn btn-success">

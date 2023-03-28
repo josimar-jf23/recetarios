@@ -112,5 +112,11 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script> 
+        function borrar_imagen(){
+            document.getElementById("btn_borrar").classList.add('ocultar');
+            document.getElementById("txt_borrar").classList.remove('ocultar');
+            document.getElementById("remover_imagen").value='1';
+        }
+    </script>
 @stop
