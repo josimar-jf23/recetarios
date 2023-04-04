@@ -17,13 +17,13 @@ class WebController extends Controller
                         ->orWhere('indicaciones','like','%'.$request->search.'%')
                         ->orderBy('receta_tipo_id','asc')
                         ->orderBy('nombre', 'asc')
-                        ->get();
+                        ->paginate(4);
             
         }else{
             $recetas=Receta::with('image')
             ->orderBy('receta_tipo_id','asc')
             ->orderBy('nombre', 'asc')
-            ->get();
+            ->paginate(12);
         }
         return view('welcome',compact('recetas'));
     }

@@ -2,7 +2,8 @@
     <div class="container bg-blue-200 ">
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-4 text-white text-sm text-center">
-            <div class="col-span-1 md:col-span-2 lg:col-span-3 xl:col-span-4 p-4 rounded-lg shadow-lg">
+            
+            <div class="col-span-1 md:col-span-2 lg:col-span-3 xl:col-span-4 p-3 rounded-lg shadow-lg">
                 
                 <form method="GET" action="{{ route('web.index') }}" autocomplete="false">   
                     <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -34,8 +35,8 @@
                         </figcaption>
                     </figure>
                    
-                    <div class="p-5 h-60">
-                        <div class="h-40">
+                    <div class="p-3 h-52">
+                        <div class="h-32">
                             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ substr($receta->descripcion,0,250) }}{{ (strlen($receta->descripcion)>250)? "...":"" }}</p>               
                         </div>
                         <div class="h-12">
@@ -52,5 +53,9 @@
                 @endforelse
             
         </div>
+        <div class="p-2">
+            {{ $recetas->links('pagination::simple-tailwind') }}
+        </div>
+        
     </div>
 </x-layout>
