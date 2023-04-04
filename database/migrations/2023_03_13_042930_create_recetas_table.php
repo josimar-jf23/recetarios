@@ -15,7 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('nombre',150);
             $table->string('slug');
-            $table->string('descripcion',150)->nullable();
+            $table->text('descripcion')->nullable();
             $table->text('indicaciones')->nullable();
             $table->unsignedBigInteger('receta_tipo_id');
             $table->foreign('receta_tipo_id')->references('id')->on('receta_tipos');
