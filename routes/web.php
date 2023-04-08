@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/',[WebController::class,'index'])->name('web.index');
+Route::get('/receta/{receta:slug}',[WebController::class,'receta'])->name('web.receta');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

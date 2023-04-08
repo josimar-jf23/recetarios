@@ -27,4 +27,8 @@ class WebController extends Controller
         }
         return view('welcome',compact('recetas'));
     }
+
+    public function receta(Receta $receta){
+        return view('receta',compact('receta'));
+    }
 }
