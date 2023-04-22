@@ -29,7 +29,10 @@
         </div>
         <div class="mx-auto max-w-screen-lg px-3 py-3">
             <h2 class="my-2 text-2xl font-bold ">Indicaciones:</h2>
-            <p class="mt-2 text-xl leading-9">{{ $receta->indicaciones }}</p>
+            {{--  <p class="mt-2 text-xl leading-9">{!! $receta->indicaciones !!}</p>  --}}
+            <div class="mt-2">
+                {!! $receta->indicaciones !!}
+            </div>
         </div>
         @if(!$receta->receta_detalle->isEmpty())        
         <div class="mx-auto max-w-screen-lg px-3 py-2 drop-shadow-lg">

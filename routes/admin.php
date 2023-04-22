@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoriasController;
 use App\Http\Controllers\Admin\IngredientesController;
 use App\Http\Controllers\Admin\RecetaDetallesController;
+use App\Http\Controllers\Admin\RecetaIndicacionesController;
 use App\Http\Controllers\Admin\RecetasController;
 use App\Http\Controllers\Admin\RecetaTiposController;
 use App\Http\Controllers\Admin\RecetaUtensiliosController;
@@ -24,6 +25,13 @@ Route::get('receta_detalles/create/{receta}',[RecetaDetallesController::class,'c
 Route::get('receta_detalles/{receta_detalle}/edit',[RecetaDetallesController::class,'edit'])->name('admin.receta_detalles.edit');
 Route::delete('receta_detalles/{receta_detalle}',[RecetaDetallesController::class,'destroy'])->name('admin.receta_detalles.destroy');
 Route::put('receta_detalles/{receta_detalle}',[RecetaDetallesController::class,'update'])->name('admin.receta_detalles.update');
+
+Route::get('receta_indicaciones/{receta}',[RecetaIndicacionesController::class,'index'])->name('admin.receta_indicaciones.index');
+Route::post('receta_indicaciones',[RecetaIndicacionesController::class,'store'])->name('admin.receta_indicaciones.store');
+Route::get('receta_indicaciones/create/{receta}',[RecetaIndicacionesController::class,'create'])->name('admin.receta_indicaciones.create');
+Route::get('receta_indicaciones/{receta_indicacion}/edit',[RecetaIndicacionesController::class,'edit'])->name('admin.receta_indicaciones.edit');
+Route::delete('receta_indicaciones/{receta_indicacion}',[RecetaIndicacionesController::class,'destroy'])->name('admin.receta_indicaciones.destroy');
+Route::put('receta_indicaciones/{receta_indicacion}',[RecetaIndicacionesController::class,'update'])->name('admin.receta_indicaciones.update');
 
 Route::get('receta_utensilios/{receta}',[RecetaUtensiliosController::class,'index'])->name('admin.receta_utensilios.index');
 Route::post('receta_utensilios',[RecetaUtensiliosController::class,'store'])->name('admin.receta_utensilios.store');

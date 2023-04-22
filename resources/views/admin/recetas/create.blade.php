@@ -80,18 +80,24 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <style>
+        .tox-promotion{
+            display: none;
+        }
+    </style>
 @stop
 
 @section('js')
+    
     <script>         
-    $(function() {
-        $('.input-select2').select2({ 
-            minimumResultsForSearch: 3,
-            theme: "bootstrap4"
+        $(function() {
+            $('.input-select2').select2({ 
+                minimumResultsForSearch: 3,
+                theme: "bootstrap4"
+            });
         });
-    });
-    $(document).on('select2:open', () => {
-        document.querySelector('.select2-search__field').focus();
-    });
+        $(document).on('select2:open', () => {
+            document.querySelector('.select2-search__field').focus();
+        });
     </script>
 @stop

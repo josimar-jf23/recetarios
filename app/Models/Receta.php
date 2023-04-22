@@ -20,6 +20,9 @@ class Receta extends Model
     public function receta_detalle(){
         return $this->hasMany(RecetaDetalle::class);
     }
+    public function receta_indicacions(){
+        return $this->hasMany(RecetaIndicacion::class);
+    }
 
     public function receta_utensilio(){
         return $this->hasMany(RecetaUtensilio::class);

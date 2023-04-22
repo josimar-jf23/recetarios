@@ -45,7 +45,8 @@
                         <th scope="col">Tipo</th>
                         <th scope="col">Receta</th>
                         <th scope="col">Descripcion</th>
-                        <th scope="col">Indicaciones</th>
+                        <th scope="col">Anotacion</th>
+                        <th style="width:4rem;max-width:4rem" scope="col">Imagen</th>
                         <th style="width:4rem;max-width:4rem" scope="col"></th>
                         <th style="width:4rem;max-width:4rem" scope="col"></th>
                         <th style="width:4rem;max-width:4rem" scope="col"></th>
@@ -67,14 +68,17 @@
                                 </td>                                
                                 <td>{{$receta->receta_tipo->nombre}}</td>
                                 <td>{{$receta->nombre}}</td>
-                                <td>{{$receta->descripcion}}</td>
-                                <td>{{$receta->indicaciones}}</td>
+                                <td>{{ (strlen($receta->descripcion)>30) ? (substr($receta->descripcion ,0,30)."..."): $receta->descripcion }}</td>
+                                <td>{{ (strlen($receta->indicaciones)>30) ? (substr($receta->indicaciones ,0,30)."..."): $receta->indicaciones }}</td>
                                 <td style="text-align: center;">
                                     @isset($receta->image)
                                     <div class="button-container">
                                         <img class="img-thumbnail" src="{{ Storage::url($receta->image->url) }}" data-holder-rendered="true" style="width: 30px; height: 30px;cursor: pointer;" alt="Sin imagen" onclick="abrirModalImagen('{{ Storage::url($receta->image->url) }}','{{$receta->nombre}}')">
                                     </div>                       
                                     @endisset
+                                </td>
+                                <td style="text-align: center;">
+                                    <a class="btn" href="{{ route('admin.receta_indicaciones.index',$receta)}}" title="Indicaciones de la receta"><i class="fas fa-list-ul"></i></a>
                                 </td>
                                 <td style="text-align: center;">
                                     <a class="btn" href="{{ route('admin.receta_detalles.index',$receta)}}" title="Detalles de la receta"><i class="fas fa-book"></i></a>

@@ -6,6 +6,7 @@ module.exports = {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './resources/views/*',
     ],
 
     theme: {
@@ -24,6 +25,13 @@ module.exports = {
                 '2xl': '6rem',
             },
         },
+        listStyleType: {
+            none: 'none',
+            disc: 'disc',
+            decimal: 'decimal',
+            square: 'square',
+            roman: 'upper-roman',
+        }
     },
 
     plugins: [require('@tailwindcss/forms')],
