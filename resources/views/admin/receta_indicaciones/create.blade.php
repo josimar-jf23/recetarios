@@ -28,7 +28,8 @@ Nueva Indicacion de {{ ucwords($receta->nombre ) }}
                 <div class="form-group">
                     <label for="orden" class="col col-form-label text-md-left">Orden<span style="color:red">*</span></label>
                     <div class="col">
-                        <input id="orden" type="text" class="form-control @error('orden') is-invalid @enderror" name="orden" value="{{ (!empty(old('orden')))?old('orden'):'0' }}" required>
+                        <input id="orden" type="text" class="form-control @error('orden') is-invalid @enderror" name="orden" value="{{ (!empty(old('orden')))?old('orden'):$proxima_orden }}" required 
+                        onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                         @error('orden')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror

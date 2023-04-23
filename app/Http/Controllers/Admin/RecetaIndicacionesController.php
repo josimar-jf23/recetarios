@@ -19,7 +19,12 @@ class RecetaIndicacionesController extends Controller
 
     public function create(Receta $receta)
     {
-        return view('admin.receta_indicaciones.create',compact('receta'));
+        $receta_indicador=RecetaIndicacion::where('receta_id',$receta->id)
+                                            ->orderBy('orden', 'desc')
+                                            ->orderBy('id', 'asc')
+                                            ->first();
+        $proxima_orden=(!empty($receta_indicador))?($receta_indicador->orden + 1):1;
+        return view('admin.receta_indicaciones.create',compact('receta','proxima_orden'));
     }
 
     public function store(Request $request)

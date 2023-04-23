@@ -60,7 +60,7 @@
                         @enderror
                     </div>                    
                 </div>
-                {{--  <div class="form-group">
+                <div class="form-group">
                     <label for="indicaciones" class="col col-form-label text-md-left">Indicaciones</label>
                     <div class="col">
                         <input 
@@ -70,17 +70,6 @@
                             name="indicaciones" 
                             value="{{ $errors->all() ? old('indicaciones') : $receta->indicaciones }}"                            
                         >
-                        @error('indicaciones')
-                            <small class="text-danger">{{ $message }}</small>
-                        @enderror
-                    </div>                    
-                </div>  --}}
-                <div class="form-group">
-                    <label for="indicaciones" class="col col-form-label text-md-left">Indicaciones</label>
-                    <div class="col">
-                        <textarea class="ckeditor @error('indicaciones') is-invalid @enderror" name="indicaciones" id="indicaciones" cols="30" rows="10">
-                            {{ $errors->all() ? old('indicaciones') : $receta->indicaciones }}
-                        </textarea>
                         @error('indicaciones')
                             <small class="text-danger">{{ $message }}</small>
                         @enderror
@@ -161,8 +150,7 @@
 @stop
 
 @section('js')
-    {{--  <script src="{{ asset('vendor/ckeditor5-build-classic/build/ckeditor.js')}}" ></script>  --}}
-    <script src="{{ asset('vendor/tinymce/tinymce.min.js') }}"></script>
+   
     <script>         
         $(function() {
             $('.input-select2').select2({ 
@@ -178,17 +166,5 @@
         $(document).on('select2:open', () => {
             document.querySelector('.select2-search__field').focus();
         });
-        tinymce.init({
-            selector: 'textarea#indicaciones',
-            plugins: 'code lists advlist',
-            toolbar: 'undo redo | bold italic underline | forecolor | template codesample | alignleft aligncenter alignright alignjustify | bullist numlist | code'
-          });
-        /*
-        ClassicEditor
-            .create(document.querySelector('.ckeditor'))
-            .catch(error => {
-                console.error(error);
-            });
-        */
     </script>
 @stop
