@@ -56,6 +56,19 @@
                     </div>                    
                 </div>
                 <div class="form-group">
+                    <label for="estado" class="col col-form-label text-md-left">Publicar<span style="color:red">*</span></label>
+                    <div class="col">                        
+                        <select class="input-select2 form-control" name="estado" id="estado" style="width: 100%;">
+                            <option value="">Seleccione</option>
+                            <option value="1" {{ ($errors->all())? ( ( old('estado')==$receta->estado)?"selected":"") : "selected" }} >Si</option>
+                            <option value="2" {{ ($errors->all())? ( (old('estado')==$receta->estado)?"selected":"") : "" }} >No</option>
+                        </select>
+                        @error('estado')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>                    
+                </div>
+                <div class="form-group">
                     <label for="imagen">Imagen</label>
                     <div class="col">                                                 
                         <input type="file" class="form-control-file" id="imagen" name="imagen" accept="image/*">

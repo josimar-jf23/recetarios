@@ -46,6 +46,7 @@
                         <th scope="col">Receta</th>
                         <th scope="col">Descripcion</th>
                         <th scope="col">Anotacion</th>
+                        <th scope="col">Publicado</th>
                         <th style="width:4rem;max-width:4rem" scope="col">Imagen</th>
                         <th style="width:4rem;max-width:4rem" scope="col"></th>
                         <th style="width:4rem;max-width:4rem" scope="col"></th>
@@ -70,6 +71,7 @@
                                 <td>{{$receta->nombre}}</td>
                                 <td>{{ (strlen($receta->descripcion)>30) ? (substr($receta->descripcion ,0,30)."..."): $receta->descripcion }}</td>
                                 <td>{{ (strlen($receta->indicaciones)>30) ? (substr($receta->indicaciones ,0,30)."..."): $receta->indicaciones }}</td>
+                                <td>{{ ($receta->estado =='1' )?"Si":"No" }}</td>
                                 <td style="text-align: center;">
                                     @isset($receta->image)
                                     <div class="button-container">

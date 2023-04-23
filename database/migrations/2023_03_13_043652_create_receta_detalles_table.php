@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('adicional',200)->nullable();
             $table->decimal('cantidad', 15, 4)->default('0');
             $table->unsignedBigInteger('ingrediente_id');
-            $table->unsignedBigInteger('unidad_medida_id');
+            $table->unsignedBigInteger('unidad_medida_id')->nullable();
             $table->unsignedBigInteger('receta_id');
             $table->foreign('receta_id')->references('id')->on('recetas');
             $table->foreign('ingrediente_id')->references('id')->on('ingredientes');

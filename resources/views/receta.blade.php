@@ -28,9 +28,15 @@
             </div>
         </div>
         <div class="mx-auto max-w-screen-lg px-3 py-3">
-            <h2 class="my-2 text-2xl font-bold ">Indicaciones:</h2>
+            <h2 class="my-2 text-2xl font-bold ">Indicaciones</h2>
             {{--  <p class="mt-2 text-xl leading-9">{!! $receta->indicaciones !!}</p>  --}}
-            <div class="mt-2">
+            <div class="mt-2 px-2  border-solid border-2 border-blue-400 rounded-lg">
+                
+                <ol class="pl-5 mt-2 space-y-1 list-decimal list-outside" >
+                @foreach ( $receta->receta_indicaciones as $indicacion )
+                    <li class="text-lg">{{ $indicacion->indicacion }}</li> 
+                @endforeach 
+                </ol>
                 {!! $receta->indicaciones !!}
             </div>
         </div>
@@ -38,7 +44,12 @@
         <div class="mx-auto max-w-screen-lg px-3 py-2 drop-shadow-lg">
             <div class="mb-2 text-2xl font-bold">Ingredientes</div>
             @foreach($receta->receta_detalle as $detalle)
-            <div class="flex flex-col gap-6">
+            <div class="mt-2 px-2  border-solid border-2 border-blue-400 rounded-lg">
+                <ul class="space-y-4 text-gray-800 list-disc list-inside">
+                    <li>{{$detalle->ingrediente->nombre}} {{round($detalle->cantidad,4) }} {{ ($detalle->unidad_medida) ?$detalle->unidad_medida->abreviatura :"" }} {{ ($detalle->adicional)?(",".$detalle->adicional):"" }}</li>
+                </ul>
+            </div>
+            {{--  <div class="flex flex-col gap-6">
                 <div class="flex flex-col gap-x-8 rounded-md bg-blue-300 p-3 md:flex-row">
                     <div class="shrink-0 flex justify-center">
                         @if ($detalle->ingrediente->image)
@@ -50,14 +61,16 @@
                         @endif
                     </div>
                     <div class="text-center md:text-left">
-                        <p class="text-xl font-bold">{{$detalle->ingrediente->nombre}}</p>
-                        <p class="text-xl font-semibold">{{$detalle->cantidad }} {{$detalle->unidad_medida->abreviatura }}</p>
+                        <p class="text-xl font-bold">{{$detalle->ingrediente->nombre}} {{round($detalle->cantidad,4) }} {{$detalle->unidad_medida->abreviatura }}</p>
+                        <p class="text-xl font-semibold"></p>
                         <p class="mt-3" > {{$detalle->ingrediente->descripcion}} </p>
-                        <p class="text-xl font-semibold text-fuchsia-900"> Adicional:</p>
-                        <p class="mt-1 text-fuchsia-800"> {{$detalle->adicional}}</p>
+                        @if ( $detalle->adicional )
+                        <p class="text-lg font-semibold text-fuchsia-800"> Adicional: {{$detalle->adicional}}</p> 
+                        @endif
+                        
                     </div>
                 </div>
-            </div>
+            </div>  --}}
             @endforeach            
         </div>
         @endif

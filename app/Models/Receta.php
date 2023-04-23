@@ -11,7 +11,7 @@ class Receta extends Model
 
     protected $table="recetas";
 
-    protected $fillable=['nombre','slug','descripcion','indicaciones','receta_tipo_id'];
+    protected $fillable=['nombre','slug','descripcion','indicaciones','receta_tipo_id','estado','fecha'];
 
     public function receta_tipo(){
         return $this->belongsTo(RecetaTipo::class);
@@ -20,7 +20,7 @@ class Receta extends Model
     public function receta_detalle(){
         return $this->hasMany(RecetaDetalle::class);
     }
-    public function receta_indicacions(){
+    public function receta_indicaciones(){
         return $this->hasMany(RecetaIndicacion::class);
     }
 

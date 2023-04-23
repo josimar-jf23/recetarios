@@ -31,14 +31,18 @@ class RecetasController extends Controller
     {
         $request->validate([
             'nombre'=>'required',
+            'estado'=>'required',
             'receta_tipo_id'=>'required',
             'imagen'=>'image|max:2048'
         ]);
+        $t_fecha=date("Y-m-d H:i:s");
         $receta=Receta::create([
             'nombre'        => $request->nombre,
-            'slug'          => Str::slug($request->nombre.date("YmdHis")),
+            'slug'          => Str::slug($request->nombre."-".$t_fecha),
             'descripcion'   => $request->descripcion,
             'indicaciones'  => $request->indicaciones,
+            'estado'        => $request->estado,
+            'fecha'         => $t_fecha,
             'receta_tipo_id'  => $request->receta_tipo_id
         ]);
         if($request->file('imagen')){
@@ -68,14 +72,17 @@ class RecetasController extends Controller
     {
         $request->validate([
             'nombre'=>'required',
+            'estado'=>'required',
             'receta_tipo_id'=>'required',
             'imagen'=>'image|max:2048'
         ]);
+        $t_fecha=$receta->fecha;
         $receta->update([
             'nombre'        => $request->nombre,
-            'slug'          => Str::slug($request->nombre.date("YmdHis")),
+            'slug'          => Str::slug($request->nombre."-".$t_fecha),
             'descripcion'   => $request->descripcion,
             'indicaciones'  => $request->indicaciones,
+            'estado'        => $request->estado,
             'receta_tipo_id'  => $request->receta_tipo_id,
         ]);
         if($request->file('imagen')){

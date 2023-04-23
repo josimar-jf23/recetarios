@@ -31,7 +31,6 @@ class RecetaDetallesController extends Controller
     {
         $request->validate([
             'ingrediente_id'=>'required',
-            'unidad_medida_id'=>'required',
             'cantidad'=>'required|decimal:0,4',
             'receta_id'=>'required'
         ]);
@@ -63,7 +62,7 @@ class RecetaDetallesController extends Controller
     {
         $request->validate([
             'ingrediente_id'=>'required',
-            'unidad_medida_id'=>'required',
+            //'unidad_medida_id'=>'required',
             'cantidad'=>'required|decimal:0,4',
             'receta_id'=>'required'
         ]);

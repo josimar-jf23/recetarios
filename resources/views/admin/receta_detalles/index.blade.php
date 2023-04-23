@@ -44,7 +44,7 @@ Detalles de {{ ucwords($receta->nombre ) }}
                                 </td>                                
                                 <td>{{$receta_detalle->ingrediente->nombre}}</td>                                
                                 <td>{{$receta_detalle->cantidad}}</td>
-                                <td>{{$receta_detalle->unidad_medida->nombre}}</td>
+                                <td>{{ ($receta_detalle->unidad_medida) ? $receta_detalle->unidad_medida->nombre : ""}}</td>
                                 <td>{{$receta_detalle->adicional}}</td>
                             </tr>
                         @empty

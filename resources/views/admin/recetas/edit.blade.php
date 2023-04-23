@@ -75,6 +75,19 @@
                         @enderror
                     </div>                    
                 </div>
+                <div class="form-group">
+                    <label for="estado" class="col col-form-label text-md-left">Publicar<span style="color:red">*</span></label>
+                    <div class="col">                        
+                        <select class="input-select2 form-control" name="estado" id="estado" style="width: 100%;">
+                            <option value="">Seleccione</option>
+                            <option value="1" {{ ($errors->all())? ( ( old('estado')==$receta->estado)?"selected":"") : (($receta->estado == '1')?"selected":"") }} >Si</option>
+                            <option value="2" {{ ($errors->all())? ((old('estado')==$receta->estado)?"selected":"") : (($receta->estado == '2')?"selected":"") }} >No</option>
+                        </select>
+                        @error('estado')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>                    
+                </div>
                 <div class="row justify-content-center">
                     @isset($receta->image)
                     <div class="button-container">
