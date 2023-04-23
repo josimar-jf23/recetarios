@@ -1,6 +1,6 @@
 <x-layout>
     <div class="container bg-blue-200 ">
-
+        {{$query_receta}}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-4 text-white text-sm text-center">
             
             <div class="col-span-1 md:col-span-2 lg:col-span-3 xl:col-span-4 p-3 rounded-lg shadow-lg">
