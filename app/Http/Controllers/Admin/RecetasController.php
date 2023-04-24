@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Receta;
 use App\Models\RecetaTipo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -13,8 +14,10 @@ class RecetasController extends Controller
 {
     public function index()
     {
+        $user_id=Auth::id();
         $recetas=Receta::with('receta_tipo')
                             ->with('image')
+                            ->where('user_id',$user_id)
                             ->orderBy('receta_tipo_id','asc')
                             ->orderBy('nombre', 'asc')
                             ->paginate(10);
@@ -36,14 +39,16 @@ class RecetasController extends Controller
             'imagen'=>'image|max:2048'
         ]);
         $t_fecha=date("Y-m-d H:i:s");
+        $user_id=Auth::id();
         $receta=Receta::create([
-            'nombre'        => $request->nombre,
-            'slug'          => Str::slug($request->nombre."-".$t_fecha),
-            'descripcion'   => $request->descripcion,
-            'indicaciones'  => $request->indicaciones,
-            'estado'        => $request->estado,
-            'fecha'         => $t_fecha,
-            'receta_tipo_id'  => $request->receta_tipo_id
+            'nombre'            => $request->nombre,
+            'slug'              => Str::slug($request->nombre."-".$t_fecha),
+            'descripcion'       => $request->descripcion,
+            'indicaciones'      => $request->indicaciones,
+            'estado'            => $request->estado,
+            'fecha'             => $t_fecha,
+            'receta_tipo_id'    => $request->receta_tipo_id,
+            'user_id'           => $user_id
         ]);
         if($request->file('imagen')){
             $file=$request->file('imagen');
@@ -64,6 +69,7 @@ class RecetasController extends Controller
 
     public function edit(Receta $receta)
     {
+        $this->authorize('creator',$receta);
         $receta_tipos=RecetaTipo::all();
         return view('admin.recetas.edit',compact('receta','receta_tipos'));
     }

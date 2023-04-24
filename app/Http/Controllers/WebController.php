@@ -20,23 +20,10 @@ class WebController extends Controller
                             ->orWhere('descripcion','like','%'.$search.'%')
                             ->orWhere('indicaciones','like','%'.$search.'%');
                         })
-                        //->where('nombre','like','%'.$search.'%')
-                        //->orWhere('descripcion','like','%'.$search.'%')
-                        //->orWhere('indicaciones','like','%'.$search.'%')
                         ->orderBy('receta_tipo_id','asc')
                         ->orderBy('nombre', 'asc')
                         ->paginate(4);
-            $query_receta=Receta::with('image')
-                        ->with('receta_tipo')
-                        ->where('estado','1')
-                        ->where(function($query) use($search) {
-                            $query->where('nombre','like','%'.$search.'%')
-                            ->orWhere('descripcion','like','%'.$search.'%')
-                            ->orWhere('indicaciones','like','%'.$search.'%');
-                        })                        
-                        ->orderBy('receta_tipo_id','asc')
-                        ->orderBy('nombre', 'asc')
-                        ->toSql();
+                        //->toSql();
             
         }else{
             $recetas=Receta::with('image')
@@ -44,12 +31,7 @@ class WebController extends Controller
             ->orderBy('receta_tipo_id','asc')
             ->orderBy('nombre', 'asc')
             ->paginate(12);
-
-            $query_receta=Receta::with('image')
-            ->where('estado','1')
-            ->orderBy('receta_tipo_id','asc')
-            ->orderBy('nombre', 'asc')
-            ->toSql();
+            //->toSql();
         }
         return view('welcome',compact('recetas','search','query_receta'));
     }

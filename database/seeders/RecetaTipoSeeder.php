@@ -18,12 +18,14 @@ class RecetaTipoSeeder extends Seeder
     {
         $t_fecha=date("Y-m-d H:i:s");
         $faker = Faker::create();
-        $receta_tipos_1=RecetaTipo::create([
+        $receta_tipos_1=RecetaTipo::create( 
+            [
                 'nombre'=>"Cocteles",
                 'slug'=>Str::slug("Cocteles"."-".$t_fecha),
                 'orden'=>"1",
                 'descripcion'=>"Preparacion en base de una mezcla de diferentes bebidas en diferentes proporciones, que contienen por lo general unos o mas tipos de bebidas alcoholicas junto a otros ingredientes."
-        ]);
+            ],
+        );
         $receta=Receta::insert([
             [
                 'nombre'=>"Piña colada",
@@ -31,7 +33,8 @@ class RecetaTipoSeeder extends Seeder
                 'descripcion'=>$faker->text($maxNbChars = 200),
                 'indicaciones'=>$faker->text($maxNbChars = 200),
                 'fecha'=>$t_fecha,
-                'receta_tipo_id'=>'1'
+                'receta_tipo_id'=>'1',
+                'user_id'=>'1'
             ],
             [
                 'nombre'=>"Cuba Libre",
@@ -39,7 +42,8 @@ class RecetaTipoSeeder extends Seeder
                 'descripcion'=>$faker->text($maxNbChars = 200),
                 'indicaciones'=>$faker->text($maxNbChars = 200),
                 'fecha'=>$t_fecha,
-                'receta_tipo_id'=>'1'
+                'receta_tipo_id'=>'1',
+                'user_id'=>'1'
             ],
             [
                 'nombre'=>"Margarita",
@@ -47,7 +51,8 @@ class RecetaTipoSeeder extends Seeder
                 'descripcion'=>$faker->text($maxNbChars = 200),
                 'indicaciones'=>$faker->text($maxNbChars = 200),
                 'fecha'=>$t_fecha,
-                'receta_tipo_id'=>'1'
+                'receta_tipo_id'=>'1',
+                'user_id'=>'1'
             ],
             [
                 'nombre'=>"Daiquiri",
@@ -55,7 +60,8 @@ class RecetaTipoSeeder extends Seeder
                 'descripcion'=>$faker->text($maxNbChars = 200),
                 'indicaciones'=>$faker->text($maxNbChars = 200),
                 'fecha'=>$t_fecha,
-                'receta_tipo_id'=>'1'
+                'receta_tipo_id'=>'1',
+                'user_id'=>'1'
             ],
             [
                 'nombre'=>"Margarita Frozzen",
@@ -63,7 +69,8 @@ class RecetaTipoSeeder extends Seeder
                 'descripcion'=>$faker->text($maxNbChars = 200),
                 'indicaciones'=>$faker->text($maxNbChars = 200),
                 'fecha'=>$t_fecha,
-                'receta_tipo_id'=>'1'
+                'receta_tipo_id'=>'1',
+                'user_id'=>'1'
             ],
             [
                 'nombre'=>"Daiquiri Frozeen",
@@ -71,7 +78,8 @@ class RecetaTipoSeeder extends Seeder
                 'descripcion'=>$faker->text($maxNbChars = 200),
                 'indicaciones'=>$faker->text($maxNbChars = 200),
                 'fecha'=>$t_fecha,
-                'receta_tipo_id'=>'1'
+                'receta_tipo_id'=>'1',
+                'user_id'=>'1'
             ],
             [
                 'nombre'=>"Mojito",
@@ -79,7 +87,8 @@ class RecetaTipoSeeder extends Seeder
                 'descripcion'=>$faker->text($maxNbChars = 200),
                 'indicaciones'=>$faker->text($maxNbChars = 200),
                 'fecha'=>$t_fecha,
-                'receta_tipo_id'=>'1'
+                'receta_tipo_id'=>'1',
+                'user_id'=>'1'
             ],
             [
                 'nombre'=>"Old Fashioned",
@@ -87,7 +96,8 @@ class RecetaTipoSeeder extends Seeder
                 'descripcion'=>$faker->text($maxNbChars = 200),
                 'indicaciones'=>$faker->text($maxNbChars = 200),
                 'fecha'=>$t_fecha,
-                'receta_tipo_id'=>'1'
+                'receta_tipo_id'=>'1',
+                'user_id'=>'1'
             ]
         ]);
         

@@ -15,11 +15,20 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-         \App\Models\User::factory()->create([
-             'name' => 'Administrador',
-             'email' => 'admin@admin.com',
-             'password'=>Hash::make("admin123+")
-         ]);
+         \App\Models\User::factory()->create(
+             [
+                'name' => 'Administrador',
+                'email' => 'admin@recetadigital.com',
+                'password'=>Hash::make("admin123+")
+             ]             
+         );
+         \App\Models\User::factory()->create(
+            [
+               'name' => 'Visitante',
+               'email' => 'visitante@recetadigital.com',
+               'password'=>Hash::make("visitante123+")
+            ]             
+        );
         $this->call(CategoriaSeeder::class);
         $this->call(UtensiloSeeder::class);
         $this->call(IngredienteSeeder::class);

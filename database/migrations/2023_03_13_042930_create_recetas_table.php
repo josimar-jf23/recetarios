@@ -20,7 +20,9 @@ return new class extends Migration
             $table->tinyInteger('estado')->default(1);
             $table->dateTime('fecha')->default(date("Y-m-d H:i:s"));
             $table->unsignedBigInteger('receta_tipo_id');
+            $table->unsignedBigInteger('user_id')->default('1');
             $table->foreign('receta_tipo_id')->references('id')->on('receta_tipos');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

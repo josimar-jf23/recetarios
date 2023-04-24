@@ -17,9 +17,14 @@ class Receta extends Model
         return $this->belongsTo(RecetaTipo::class);
     }
     
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
     public function receta_detalle(){
         return $this->hasMany(RecetaDetalle::class);
     }
+
     public function receta_indicaciones(){
         return $this->hasMany(RecetaIndicacion::class);
     }
@@ -27,7 +32,7 @@ class Receta extends Model
     public function receta_utensilio(){
         return $this->hasMany(RecetaUtensilio::class);
     }
-
+    
     //relacion una a uno polimorfica
     public function image(){
         return $this->morphOne(Image::class,'imageable');
